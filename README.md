@@ -52,8 +52,8 @@ Provavelmente já estarás vendo o arquivo `tsconfig.json` na raiz do projeto, v
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
-    "rootDir": "./src",
-    "outDir": "./dist",
+    "rootDir": "./src/",
+    "outDir": "./dist/",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true
