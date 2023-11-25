@@ -3,7 +3,7 @@ import { Discipline } from './entities/Discipline'
 import { Menu } from './entities/Menu'
 
 const main = () => {
-    new Menu().showMenu()
+    new Menu().start()
 }
 
 const listCourses = [new Course("Back end", [new Discipline("lógica", 20), new Discipline("POO", 30)])]
