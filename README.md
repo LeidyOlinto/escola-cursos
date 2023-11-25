@@ -67,6 +67,12 @@ Instale o pacote do ts-node, ele visa facilitar a transpilação e execução de
   npm i -g ts-node
 ```
 
+Este projeto necessita de um pacote externo, para instalar:
+
+```bash
+  npm i --save-dev @types/readline-sync
+```
+
 Em seguida, construa o projeto:
 
 ```bash
@@ -76,8 +82,8 @@ Em seguida, construa o projeto:
 Para executar o projeto, execute:
 
 ```bash
-tsc index.ts   
-node index.js
+  tsc index.ts   
+  node index.js
 ```
 ___
 
