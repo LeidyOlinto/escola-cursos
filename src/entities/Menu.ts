@@ -42,7 +42,6 @@ export class Menu implements FunctionalRequirements {
                 break;
             case "4":
                 console.log("\nSaindo do sistema. Até mais!");
-                this.sair()
                 break;
             default:
                 console.log("\nOpção inválida. Tente novamente.\n");
@@ -62,9 +61,6 @@ export class Menu implements FunctionalRequirements {
     manageCourses(): void {
         console.log("\nGerenciando Cursos...\n");
         this.showMenuCourses()
-    }
-    sair(): void {
-        
     }
 
     // SUBMENU ALUNOS ------------------------------------

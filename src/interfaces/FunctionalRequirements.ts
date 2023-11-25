@@ -15,5 +15,4 @@ export interface FunctionalRequirements {
   conferCourse(): void
   deleteCourse(): void
   updateCourse(): void
-  sair(): void
 }
