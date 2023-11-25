@@ -42,7 +42,7 @@ Instale o Typescript usando o seguinte comando:
 Inicialize o Typescript:
 
 ```bash
-  tsc -- init
+  tsc --init
 ```
 
 Provavelmente já estarás vendo o arquivo `tsconfig.json` na raiz do projeto, você poderá subtituir todas as linhas de dentro dele pelas correspondentes abaixo:
