@@ -70,6 +70,7 @@ Instale o pacote do ts-node, ele visa facilitar a transpilação e execução de
 Este projeto necessita de um pacote externo, para instalar:
 
 ```bash
+  npm install readline-sync
   npm i --save-dev @types/readline-sync
 ```
 
