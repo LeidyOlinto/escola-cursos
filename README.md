@@ -21,11 +21,17 @@ Nesse projeto será usado TypeScript, então para executar a aplicação, será 
 
 - [NodeJs](https://nodejs.org/en/download)
 
-Instale o `Node.js` na versão 18 ou superior e assegure-se que a instalação foi bem sucedida no seu sistema, utilizando o seguinte comando em seu terminal:
+Instale o `Node.js` na versão 18 ou superior de acordo com seu Sistema Operacional.
 
-```bash
-  node -v
-```
+  - Para Windows e Mac, instale o arquivo executável correspondente localizado no site do [NodeJs](https://nodejs.org/en/download).
+  - Para Linux entre no terminal e utilize o comando:
+    ```bash
+      sudo app-get nodejs
+    ```
+  - Assegure-se que a instalação foi bem sucedida no seu sistema utilizando o seguinte comando em seu terminal:
+    ```bash
+      node -v
+    ```
 
 Clone esse repositório e navegue pelo terminal até a pasta raiz dele e execute o seguinte comando:
 
@@ -83,7 +89,7 @@ Em seguida, construa o projeto:
 Para executar o projeto, execute:
 
 ```bash
-  tsc index.ts   
+  tsc index.ts
   node index.js
 ```
 ___
@@ -133,9 +139,9 @@ ___
 
 #### Os requisitos adjacentes que encontramos foram
 
-- [ ] Definir o tipo e a estrutura das entidades mencionadas no desafio;
-- [ ] Criar uma estrutura (coleção) com várias tarefas base para testes;
-- [ ] Criação de uma função principal que iniciará a interação via **CLI** (Command Line Interface) com o usuário;
-- [ ] Aplicar um menu na função principal com as operações principais requeridas no projeto;
+- [x] Definir o tipo e a estrutura das entidades mencionadas no desafio;
+- [x] Criação de uma função "Main" que iniciará a interação via **CLI** (Command Line Interface) com o usuário no arquivo index.ts;
+- [x] Invocar a função "Main" com as operações principais requeridas no projeto;
 - [ ] Criar funções adjacentes que segregam responsabilidades dentro do código, como:
-  - [ ] ...
+  - [x] Função que calcula a carga horária (workload) de cada curso somando as caragas horárias de suas correspondentes disciplinas.
+    - [x] Defini-la dentro da classe "Course" com o método "getTotalWorkload()"
