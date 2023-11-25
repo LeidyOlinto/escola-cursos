@@ -70,6 +70,7 @@ export class Menu implements FunctionalRequirements {
         console.log("1 - Cadastrar ALUNO");
         console.log("2 - Consultar ALUNO");
         console.log("3 - Remover ALUNO");
+        console.log("4 - Atualizar ALUNO");
         console.log("5 - Voltar ao menu principal");
         console.log("6 - Sair");
 
@@ -105,16 +106,20 @@ export class Menu implements FunctionalRequirements {
     }
 
     registerStudent(): void {
-        console.log("\nIMPLEMENTAR CADASTRAR ALUNO");
+        console.log("\nIMPLEMENTAR CADASTRAR ALUNO\n");
+        this.showMenuStudents()
     }
     conferStudent(): void {
-        console.log("\nIMPLEMENTAR CONSULTAR ALUNO");
+        console.log("\nIMPLEMENTAR CONSULTAR ALUNO\n");
+        this.showMenuStudents()
     }
     deleteStudent(): void {
-        console.log("\nIMPLEMENTAR REMOVER ALUNO");
+        console.log("\nIMPLEMENTAR REMOVER ALUNO\n");
+        this.showMenuStudents()
     }
     updateStudent(): void {
-        console.log("\nIMPLEMENTAR ATUALIZAR ALUNO");
+        console.log("\nIMPLEMENTAR ATUALIZAR ALUNO\n");
+        this.showMenuStudents()
     }
 
     // SUBMENU DISCIPLINAS ------------------------------------
@@ -160,16 +165,20 @@ export class Menu implements FunctionalRequirements {
     }
 
     registerDiscipline(): void {
-        console.log("\nIMPLEMENTAR CADASTRAR DISCIPLINA");
+        console.log("\nIMPLEMENTAR CADASTRAR DISCIPLINA\n");
+        this.showMenuDisciplines()
     }
     conferDiscipline(): void {
-        console.log("\nIMPLEMENTAR CONSULTAR DISCIPLINA");
+        console.log("\nIMPLEMENTAR CONSULTAR DISCIPLINA\n");
+        this.showMenuDisciplines()
     }
     deleteDiscipline(): void {
-        console.log("\nIMPLEMENTAR REMOVER DISCIPLINA");
+        console.log("\nIMPLEMENTAR REMOVER DISCIPLINA\n");
+        this.showMenuDisciplines()
     }
     updateDiscipline(): void {
-        console.log("\nIMPLEMENTAR ATUALIZAR DISCIPLINA");
+        console.log("\nIMPLEMENTAR ATUALIZAR DISCIPLINA\n");
+        this.showMenuDisciplines()
     }
 
 
@@ -216,16 +225,20 @@ export class Menu implements FunctionalRequirements {
     }
 
     registerCourse(): void {
-        console.log("\nIMPLEMENTAR CADASTRAR CURSO");
+        console.log("\nIMPLEMENTAR CADASTRAR CURSO\n");
+        this.showMenuCourses()
     }
     conferCourse(): void {
-        console.log("\nIMPLEMENTAR CONSULTAR CURSO");
+        console.log("\nIMPLEMENTAR CONSULTAR CURSO\n");
+        this.showMenuCourses()
     }
     deleteCourse(): void {
-        console.log("\nIMPLEMENTAR DELETAR CURSO");
+        console.log("\nIMPLEMENTAR REMOVER CURSO\n");
+        this.showMenuCourses()
     }
     updateCourse(): void {
-        console.log("\nIMPLEMENTAR ATUALIZAR CURSO");
+        console.log("\nIMPLEMENTAR ATUALIZAR CURSO\n");
+        this.showMenuCourses()
     }
 
 }

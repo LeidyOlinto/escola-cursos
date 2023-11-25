@@ -8,6 +8,8 @@ const main = () => {
 
 const listCourses = [new Course("Back end", [new Discipline("lógica", 20), new Discipline("POO", 30)])]
 
+// TESTE COM DADOS
+
 // console.log( 'ta dando certo');
 // const system = new Menu([], [], listCourses);
 // console.log( system);
