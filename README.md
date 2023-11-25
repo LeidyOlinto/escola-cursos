@@ -76,7 +76,7 @@ Em seguida, construa o projeto:
 Para executar o projeto, execute:
 
 ```bash
-tsc filename.ts   
+tsc index.ts   
 node index.js
 ```
 ___
