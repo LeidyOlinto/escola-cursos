@@ -1,5 +1,4 @@
 export interface FunctionalRequirements {
-  start(): void
   manageStudents(): void
   manageDisciplines(): void
   manageCourses(): void
