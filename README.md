@@ -104,9 +104,9 @@ ___
 
 - [ ] 01 - Crie um sistema com um MENU com as seguintes opções:
   - [ ] 1.1 - Gerenciar ALUNOS
-  - [ ] 1.2 - Gerenciar DISCIPLINAS
+  - [X] 1.2 - Gerenciar DISCIPLINAS
   - [ ] 1.3 - Gerenciar CURSOS
-  - [ ] 1.4 - SAIR
+  - [X] 1.4 - SAIR
 
 - [ ] 02 - Crie um SUBMENU com as seguintes opções para a opção 1:
   - [ ] 2.1 - Cadastrar ALUNO
@@ -114,11 +114,11 @@ ___
   - [ ] 2.3 - Remover ALUNO
   - [ ] 2.4 - Atualizar ALUNO
 
-- [ ] 03 - Crie um SUBMENU com as seguintes opções para a opção 2:
-  - [ ] 3.1 - Cadastrar DISCIPLINA
-  - [ ] 3.2 - Consultar DISCIPLINA
-  - [ ] 3.3 - Remover DISCIPLINA
-  - [ ] 3.4 - Atualizar DISCIPLINA
+- [X] 03 - Crie um SUBMENU com as seguintes opções para a opção 2:
+  - [X] 3.1 - Cadastrar DISCIPLINA
+  - [X] 3.2 - Consultar DISCIPLINA
+  - [X] 3.3 - Remover DISCIPLINA
+  - [X] 3.4 - Atualizar DISCIPLINA
 
 - [ ] 04 - Crie um SUBMENU com as seguintes opções para a opção 3:
   - [ ] 4.1 - Cadastrar CURSO
@@ -132,7 +132,7 @@ ___
 
 - [ ] 07 - Um CURSO deve pussuir DISCIPLINAS (e dados como nome do curso, turno e etc.)
 
-- [ ] 08 - Uma DISCIPLINA deve possuir nome, carga horária, nota e etc.
+- [X] 08 - Uma DISCIPLINA deve possuir nome, carga horária, nota e etc.
 
 #### Observações
 
