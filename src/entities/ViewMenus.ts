@@ -59,8 +59,8 @@ export class ViewMenus {
     if (discipline) {
       return `
       Nome: ${discipline.getName()}
-      Carga-horária: ${discipline.workload}
-      Nota obtida: ${0}
+      Carga-horária: ${discipline.getWokload()}
+      Nota obtida: ${discipline.getGrade()}
       `;
     }
     return `\nDisciplina não cadastrada.\n`
@@ -68,10 +68,10 @@ export class ViewMenus {
   static disciplineUpdate(): string{
     return `
     Opções de atualização para disciplina:
-    1 - Atualizar o nome da disciplina
-    2 - Atualizar a carga-horária da disciplina
-    3 - Atualizar a nota da disciplina
-    4 - Voltar
+
+    1 - Atualizar a carga-horária da disciplina
+    2 - Atualizar a nota da disciplina
+    3 - Voltar
     `;
   }
   static coursesMainMenu(): string {
