@@ -23,17 +23,21 @@ Nesse projeto será usado TypeScript, então para executar a aplicação, será 
 
 Instale o `Node.js` na versão 18 ou superior de acordo com seu Sistema Operacional.
 
-  - Para Windows e Mac, instale o arquivo executável correspondente localizado no site do [NodeJs](https://nodejs.org/en/download).
-  - Para Linux entre no terminal e utilize o comando:
-    ```bash
-      sudo app-get nodejs
-    ```
-  - Assegure-se que a instalação foi bem sucedida no seu sistema utilizando o seguinte comando em seu terminal:
-    ```bash
-      node -v
-    ```
+- Para Windows e Mac, instale o arquivo executável correspondente localizado no site do [NodeJs](https://nodejs.org/en/download).
 
-Clone esse repositório e navegue pelo terminal até a pasta raiz dele e execute o seguinte comando:
+- Para Linux entre no terminal e utilize o comando:
+
+  ```bash
+    sudo apt install nodejs
+  ```
+
+- Assegure-se que a instalação foi bem sucedida no seu sistema utilizando o seguinte comando em seu terminal:
+
+  ```bash
+    node -v
+  ```
+
+Clone esse [repositório](https://github.com/LeidyOlinto/escola-cursos.git) e navegue pelo terminal até a pasta raiz dele e execute o seguinte comando:
 
 ```bash
   npm init -y
@@ -92,6 +96,7 @@ Para executar o projeto, execute:
   tsc index.ts
   node index.js
 ```
+
 ___
 
 ### Sobre o projeto
