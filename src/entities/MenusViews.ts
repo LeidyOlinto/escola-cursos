@@ -4,11 +4,13 @@ import { Student } from "./Student";
 export class ViewMenus {
   static mainMenu(): string {
     return `
-    MENU:
-    1 - Gerenciar ALUNOS
-    2 - Gerenciar DISCIPLINAS
-    3 - Gerenciar CURSOS
-    4 - SAIR
+   +=========== MENU: =============+
+   | 1 - Gerenciar ALUNOS          |
+   | 2 - Gerenciar DISCIPLINAS     |
+   | 3 - Gerenciar CURSOS          |
+   | 4 - SAIR                      |
+   |                               |
+   +===============================+
     `;
   }
   static studentsMainMenu(): string {
