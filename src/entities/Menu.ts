@@ -4,7 +4,7 @@ import { Discipline } from "./Discipline";
 import { Course } from "./Course";
 import { FunctionalRequirements } from "../interfaces/FunctionalRequirements";
 import { findStudentByName, findStudentIndexByName, findDisciplineByName, findDisciplineIndexByName } from "./Utils";
-import { ViewMenus } from "./MenusViews";
+import { ViewMenus } from "./ViewMenus";
 
 
 export class Menu implements FunctionalRequirements {
@@ -190,13 +190,12 @@ export class Menu implements FunctionalRequirements {
         let grade: number = 0;
         if (opt == "1") {
             grade = Number(readlineSync.question("Informe a nota para a disciplina: "));
-            throw new Error("Atributo referente a nota da disciplina não encontrado");
         }
 
         if (findDisciplineByName(this.disciplines, name)) {
             console.error("\nErro: Disciplina já cadastrada.\n");
         } else {
-            const newDiscipline = new Discipline(name, workload/*,grade*/);
+            const newDiscipline = new Discipline(name, workload, grade );
             this.disciplines.push(newDiscipline);
             console.log("\nDisciplina cadastrada com sucesso.\n");
         }
@@ -233,22 +232,16 @@ export class Menu implements FunctionalRequirements {
 
             switch (option) {
                 case "1":
-                    const name: string = readlineSync.question("Novo nome para disciplina: ");
-                    discipline.name = name;
-                    console.log("\nNome atualizado com sucesso.\n");
-                    break;
-                case "2":
                     const newWorkload: number = Number(readlineSync.question("Nova carga-horária para disciplina: "));
-                    discipline.workload = newWorkload;
+                    discipline.setWorkload(newWorkload);
                     console.log("\nCarga-horária atualizada com sucesso.\n");
                     break;
-                case "3":
+                case "2":
                     const newGrade: number = Number(readlineSync.question("Nova nota para disciplina: "));
-                    console.error("\nFalha na atualização da nota.\n");
-                    // discipline.Grade = newGrade;
-                    // console.log("\nNota atualizada com sucesso.\n");
+                     discipline.setGrade(newGrade);
+                     console.log("\nNota atualizada com sucesso.\n");
                     break;
-                case "4": break;
+                case "3": break;
                 default:
                     console.log("\nOpção inválida.\n");
             }
