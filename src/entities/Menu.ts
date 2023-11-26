@@ -3,6 +3,7 @@ import { Student } from "./Student";
 import { Discipline } from "./Discipline";
 import { Course } from "./Course";
 import { FunctionalRequirements } from "../interfaces/FunctionalRequirements";
+import { findStudentByName, findStudentIndexByName } from "./Utils";
 
 
 export class Menu implements FunctionalRequirements {
@@ -106,20 +107,96 @@ export class Menu implements FunctionalRequirements {
     }
 
     registerStudent(): void {
-        console.log("\nIMPLEMENTAR CADASTRAR ALUNO\n");
-        this.showMenuStudents()
+        console.log("\nCADASTRAR ALUNO:");
+
+        const name: string = readlineSync.question("Nome do aluno: ");
+        const phoneNumber: number = parseInt(readlineSync.question("Número de telefone: "));
+        const email: string = readlineSync.question("Email: ");
+        const age: number = parseInt(readlineSync.question("Idade: "));
+
+        if (findStudentByName(this.students, name)) {
+            console.log("\nErro: Aluno já cadastrado.\n");
+        } else {
+            const newStudent = new Student(name, phoneNumber, email, age, []);
+            this.students.push(newStudent);
+            console.log("\nAluno cadastrado com sucesso.\n");
+        }
+
+        this.showMenuStudents();
     }
+
     conferStudent(): void {
-        console.log("\nIMPLEMENTAR CONSULTAR ALUNO\n");
-        this.showMenuStudents()
+        console.log("\nCONSULTAR ALUNO:");
+    
+        const name: string = readlineSync.question("Nome do aluno: ");
+        const student = findStudentByName(this.students, name);
+    
+        if (student) {
+            console.log("\nInformações do aluno:");
+            console.log(`Nome: ${student.getName()}`);
+            console.log(`Telefone: ${student.getPhoneNumber()}`);
+            console.log(`Email: ${student.getEmail()}`);
+            console.log(`Idade: ${student.getAge()}\n`);
+        } else {
+            console.log("\nAluno não encontrado.\n");
+        }
+    
+        this.showMenuStudents();
     }
+
     deleteStudent(): void {
-        console.log("\nIMPLEMENTAR REMOVER ALUNO\n");
-        this.showMenuStudents()
+        console.log("\nREMOVER ALUNO:");
+
+        const name: string = readlineSync.question("Nome do aluno: ");
+        const studentIndex = findStudentIndexByName(this.students, name);
+
+        if (studentIndex !== -1) {
+            this.students.splice(studentIndex, 1);
+            console.log("\nAluno removido com sucesso.\n");
+        } else {
+            console.log("\nAluno não encontrado.\n");
+        }
+
+        this.showMenuStudents();
     }
+
     updateStudent(): void {
-        console.log("\nIMPLEMENTAR ATUALIZAR ALUNO\n");
-        this.showMenuStudents()
+        console.log("\nATUALIZAR ALUNO:");
+
+        const name: string = readlineSync.question("Nome do aluno: ");
+        const studentIndex = findStudentIndexByName(this.students, name);
+
+        if (studentIndex !== -1) {
+            const student = this.students[studentIndex];
+
+            console.log("\nOpções de atualização:");
+            console.log("1 - Atualizar telefone");
+            console.log("2 - Atualizar email");
+            console.log("3 - Voltar");
+
+            const option: string = readlineSync.question("\nEscolha uma opção: ");
+
+            switch (option) {
+                case "1":
+                    const newPhoneNumber: number = parseInt(readlineSync.question("Novo número de telefone: "));
+                    student.setPhoneNumber(newPhoneNumber);
+                    console.log("\nTelefone atualizado com sucesso.\n");
+                    break;
+                case "2":
+                    const newEmail: string = readlineSync.question("Novo email: ");
+                    student.setEmail(newEmail);
+                    console.log("\nEmail atualizado com sucesso.\n");
+                    break;
+                case "3":
+                    break;
+                default:
+                    console.log("\nOpção inválida.\n");
+            }
+        } else {
+            console.log("\nAluno não encontrado.\n");
+        }
+
+        this.showMenuStudents();
     }
 
     // SUBMENU DISCIPLINAS ------------------------------------

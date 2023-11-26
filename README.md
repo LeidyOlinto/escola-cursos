@@ -86,10 +86,9 @@ Em seguida, construa o projeto:
   tsc --build
 ```
 
-Para executar o projeto, execute:
+Para executar o projeto, certifique-se de estar dentro da pasta dist, e execute:
 
 ```bash
-  tsc index.ts
   node index.js
 ```
 ___
