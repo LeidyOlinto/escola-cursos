@@ -3,34 +3,27 @@ import { Student } from "./Student";
 import { Discipline } from "./Discipline";
 import { Course } from "./Course";
 import { FunctionalRequirements } from "../interfaces/FunctionalRequirements";
-import { findStudentByName, findStudentIndexByName } from "./Utils";
+import { findStudentByName, findStudentIndexByName, findDisciplineByName, findDisciplineIndexByName } from "./Utils";
+import { ViewMenus } from "./MenusViews";
 
 
 export class Menu implements FunctionalRequirements {
-    students: Student[];
-    disciplines: Discipline[];
-    courses: Course[];
+    private students: Student[];
+    private disciplines: Discipline[];
+    private courses: Course[];
 
     constructor(students: Student[] = [], disciplines: Discipline[] = [], courses: Course[] = []) {
         this.students = students
         this.disciplines = disciplines
         this.courses = courses
     }
-        
-    // MENU PRINCIPAL ---------------------------------
 
-    start(): void {
-        console.log("MENU:");
-        console.log("1 - Gerenciar ALUNOS");
-        console.log("2 - Gerenciar DISCIPLINAS");
-        console.log("3 - Gerenciar CURSOS");
-        console.log("4 - SAIR");
-
+    public start(): void {
+        console.log(ViewMenus.mainMenu());
         const option: string = readlineSync.question("\nEscolha uma opção: ");
-        this.processOption(option);
+        this.processStartOption(option);
     }
-
-    processOption(option: string): void {
+    private processStartOption(option: string): void {
         switch (option) {
             case "1":
                 this.manageStudents();
@@ -51,35 +44,12 @@ export class Menu implements FunctionalRequirements {
         }
     }
 
-    manageStudents(): void {
-        console.log("\nGerenciando Alunos...\n");
-        this.showMenuStudents()
-    }
-    manageDisciplines(): void {
-        console.log("\nGerenciando Disciplinas...\n");
-        this.showMenuDisciplines()
-    }
-    manageCourses(): void {
-        console.log("\nGerenciando Cursos...\n");
-        this.showMenuCourses()
-    }
-
-    // SUBMENU ALUNOS ------------------------------------
-
-    showMenuStudents(): void {
-        console.log("MENU ALUNOS:");
-        console.log("1 - Cadastrar ALUNO");
-        console.log("2 - Consultar ALUNO");
-        console.log("3 - Remover ALUNO");
-        console.log("4 - Atualizar ALUNO");
-        console.log("5 - Voltar ao menu principal");
-        console.log("6 - Sair");
-
+    public manageStudents(): void {
+        console.log(ViewMenus.studentsMainMenu());
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processOptionStudents(option);
     }
-
-    processOptionStudents(option: string): void {
+    private processOptionStudents(option: string): void {
         switch (option) {
             case "1":
                 this.registerStudent();
@@ -101,52 +71,37 @@ export class Menu implements FunctionalRequirements {
                 break;
             default:
                 console.log("\nOpção inválida. Tente novamente.\n");
-                this.showMenuDisciplines()
+                this.manageStudents();
                 break;
         }
     }
-
-    registerStudent(): void {
+    public registerStudent(): void {
         console.log("\nCADASTRAR ALUNO:");
-
         const name: string = readlineSync.question("Nome do aluno: ");
         const phoneNumber: number = parseInt(readlineSync.question("Número de telefone: "));
         const email: string = readlineSync.question("Email: ");
         const age: number = parseInt(readlineSync.question("Idade: "));
 
         if (findStudentByName(this.students, name)) {
-            console.log("\nErro: Aluno já cadastrado.\n");
+            console.error("\nErro: Aluno já cadastrado.\n");
         } else {
             const newStudent = new Student(name, phoneNumber, email, age, []);
             this.students.push(newStudent);
             console.log("\nAluno cadastrado com sucesso.\n");
         }
 
-        this.showMenuStudents();
+        this.manageStudents();
     }
-
-    conferStudent(): void {
+    public conferStudent(): void {
         console.log("\nCONSULTAR ALUNO:");
-    
         const name: string = readlineSync.question("Nome do aluno: ");
         const student = findStudentByName(this.students, name);
-    
-        if (student) {
-            console.log("\nInformações do aluno:");
-            console.log(`Nome: ${student.getName()}`);
-            console.log(`Telefone: ${student.getPhoneNumber()}`);
-            console.log(`Email: ${student.getEmail()}`);
-            console.log(`Idade: ${student.getAge()}\n`);
-        } else {
-            console.log("\nAluno não encontrado.\n");
-        }
-    
-        this.showMenuStudents();
+        console.log(ViewMenus.studentInfo(student));
+
+        this.manageStudents();
     }
-
-    deleteStudent(): void {
+    public deleteStudent(): void {
         console.log("\nREMOVER ALUNO:");
-
         const name: string = readlineSync.question("Nome do aluno: ");
         const studentIndex = findStudentIndexByName(this.students, name);
 
@@ -157,10 +112,9 @@ export class Menu implements FunctionalRequirements {
             console.log("\nAluno não encontrado.\n");
         }
 
-        this.showMenuStudents();
+        this.manageStudents();
     }
-
-    updateStudent(): void {
+    public updateStudent(): void {
         console.log("\nATUALIZAR ALUNO:");
 
         const name: string = readlineSync.question("Nome do aluno: ");
@@ -168,12 +122,7 @@ export class Menu implements FunctionalRequirements {
 
         if (studentIndex !== -1) {
             const student = this.students[studentIndex];
-
-            console.log("\nOpções de atualização:");
-            console.log("1 - Atualizar telefone");
-            console.log("2 - Atualizar email");
-            console.log("3 - Voltar");
-
+            console.log(ViewMenus.studentUpdate());
             const option: string = readlineSync.question("\nEscolha uma opção: ");
 
             switch (option) {
@@ -190,31 +139,23 @@ export class Menu implements FunctionalRequirements {
                 case "3":
                     break;
                 default:
-                    console.log("\nOpção inválida.\n");
+                    console.error("\nOpção inválida.\n");
             }
         } else {
             console.log("\nAluno não encontrado.\n");
         }
 
-        this.showMenuStudents();
+        this.manageStudents();
     }
 
-    // SUBMENU DISCIPLINAS ------------------------------------
 
-    showMenuDisciplines(): void {
-        console.log("MENU DICIPLINAS:");
-        console.log("1- Cadastrar DISCIPLINA");
-        console.log("2- Consultar DISCIPLINA");
-        console.log("3- Remover DISCIPLINA");
-        console.log("4- Atualizar DISCIPLINA");
-        console.log("5 - Voltar ao menu principal");
-        console.log("6 - Sair");
-
+    public manageDisciplines(): void {
+        console.log("\nGerenciando Disciplinas...\n");
+        console.log(ViewMenus.disciplinesMainMenu());
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processOptionDisciplines(option);
     }
-
-    processOptionDisciplines(option: string): void {
+    private processOptionDisciplines(option: string): void {
         switch (option) {
             case "1":
                 this.registerDiscipline();
@@ -235,45 +176,95 @@ export class Menu implements FunctionalRequirements {
                 console.log("\nSaindo do sistema. Até mais!");
                 break;
             default:
-                console.log("\nOpção inválida. Tente novamente.\n");
-                this.showMenuDisciplines()
+                console.error("\nOpção inválida. Tente novamente.\n");
+                this.manageDisciplines()
                 break;
         }
     }
+    public registerDiscipline(): void {
+        console.log("\nCADASTRAR DISCIPLINA\n");
+        const name: string = readlineSync.question("Nome da disciplina: ");
+        const workload: number = parseInt(readlineSync.question("Número de horas da carga-horária: "));
 
-    registerDiscipline(): void {
-        console.log("\nIMPLEMENTAR CADASTRAR DISCIPLINA\n");
-        this.showMenuDisciplines()
+        const opt = readlineSync.question("Digite 1 caso já possuas uma nota para essa disciplina: ");
+        let grade: number = 0;
+        if (opt == "1") {
+            grade = Number(readlineSync.question("Informe a nota para a disciplina: "));
+            throw new Error("Atributo referente a nota da disciplina não encontrado");
+        }
+
+        if (findDisciplineByName(this.disciplines, name)) {
+            console.error("\nErro: Disciplina já cadastrada.\n");
+        } else {
+            const newDiscipline = new Discipline(name, workload/*,grade*/);
+            this.disciplines.push(newDiscipline);
+            console.log("\nDisciplina cadastrada com sucesso.\n");
+        }
+        this.manageDisciplines()
     }
-    conferDiscipline(): void {
-        console.log("\nIMPLEMENTAR CONSULTAR DISCIPLINA\n");
-        this.showMenuDisciplines()
+    public conferDiscipline(): void {
+        const name: string = readlineSync.question("Nome da disciplina: ");
+        const discipline = findDisciplineByName(this.disciplines, name);
+        console.log(ViewMenus.disciplineInfo(discipline));
+        this.manageDisciplines()
     }
-    deleteDiscipline(): void {
-        console.log("\nIMPLEMENTAR REMOVER DISCIPLINA\n");
-        this.showMenuDisciplines()
+    public deleteDiscipline(): void {
+        console.log("\nREMOVER DISCIPLINA\n");
+        const name: string = readlineSync.question("Nome da disciplina que será removida: ");
+        const disciplineIndex = findDisciplineIndexByName(this.disciplines, name);
+        if (disciplineIndex !== -1) {
+            const disciplinesRemoved = this.disciplines.splice(disciplineIndex, 1);
+            console.log("A seguinte disciplina foi removida com sucesso:");
+            console.log(ViewMenus.disciplineInfo(disciplinesRemoved[0]));
+        } else {
+            console.log("\nDisciplina não encontrada.\n");
+        }
+
+        this.manageDisciplines()
     }
-    updateDiscipline(): void {
-        console.log("\nIMPLEMENTAR ATUALIZAR DISCIPLINA\n");
-        this.showMenuDisciplines()
+    public updateDiscipline(): void {
+        const name: string = readlineSync.question("Nome da disciplina: ");
+        const disciplineIndex = findDisciplineIndexByName(this.disciplines, name);
+
+        if (disciplineIndex !== -1) {
+            const discipline = this.disciplines[disciplineIndex];
+            console.log(ViewMenus.disciplineUpdate());
+            const option: string = readlineSync.question("\nEscolha uma opção: ");
+
+            switch (option) {
+                case "1":
+                    const name: string = readlineSync.question("Novo nome para disciplina: ");
+                    discipline.name = name;
+                    console.log("\nNome atualizado com sucesso.\n");
+                    break;
+                case "2":
+                    const newWorkload: number = Number(readlineSync.question("Nova carga-horária para disciplina: "));
+                    discipline.workload = newWorkload;
+                    console.log("\nCarga-horária atualizada com sucesso.\n");
+                    break;
+                case "3":
+                    const newGrade: number = Number(readlineSync.question("Nova nota para disciplina: "));
+                    console.error("\nFalha na atualização da nota.\n");
+                    // discipline.Grade = newGrade;
+                    // console.log("\nNota atualizada com sucesso.\n");
+                    break;
+                case "4": break;
+                default:
+                    console.log("\nOpção inválida.\n");
+            }
+        } else
+            console.error("\nDisciplina não encontrada.\n");
+
+        this.manageDisciplines()
     }
 
 
-    // SUBMENU CURSOS ------------------------------
-
-    showMenuCourses(): void {
-        console.log("MENU CURSOS:");
-        console.log("1 - Cadastrar CURSO");
-        console.log("2 - Consultar CURSO");
-        console.log("3 - Remover CURSO");
-        console.log("4 - Atualizar CURSO");
-        console.log("5 - Voltar ao menu principal");
-        console.log("6 - Sair");
-
+    public manageCourses(): void {
+        console.log("\nGerenciando Cursos...\n");
+          console.log(ViewMenus.coursesMainMenu());
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processOptionCourses(option);
     }
-
     processOptionCourses(option: string): void {
         switch (option) {
             case "1":
@@ -296,26 +287,25 @@ export class Menu implements FunctionalRequirements {
                 break;
             default:
                 console.log("\nOpção inválida. Tente novamente.\n");
-                this.showMenuDisciplines()
+                this.manageDisciplines()
                 break;
         }
     }
-
     registerCourse(): void {
         console.log("\nIMPLEMENTAR CADASTRAR CURSO\n");
-        this.showMenuCourses()
+        this.manageCourses()
     }
     conferCourse(): void {
         console.log("\nIMPLEMENTAR CONSULTAR CURSO\n");
-        this.showMenuCourses()
+        this.manageCourses()
     }
     deleteCourse(): void {
         console.log("\nIMPLEMENTAR REMOVER CURSO\n");
-        this.showMenuCourses()
+        this.manageCourses()
     }
     updateCourse(): void {
         console.log("\nIMPLEMENTAR ATUALIZAR CURSO\n");
-        this.showMenuCourses()
+        this.manageCourses()
     }
 
 }
