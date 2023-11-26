@@ -45,7 +45,7 @@ Clone esse [repositório](https://github.com/LeidyOlinto/escola-cursos.git) e na
 
 Instale o Typescript usando o seguinte comando:
 
-```md
+```bash
   npm i -g typescript
 ```
 
