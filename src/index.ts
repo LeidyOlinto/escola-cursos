@@ -25,10 +25,10 @@ const baseMenu = (): Menu => {
 
     const ld1 = [d1, d2]
     const ld2 = [d3, d4]
-    const c1 = new Course("TI dados", ld1);
-    const c2 = new Course("Dados", [...ld2, ...ld1]);
+    const c1 = new Course("TI dados", ld1, "Manhã");
+    // const c2 = new Course("Dados", [...ld2, ...ld1,]);
 
-    const lc1 = [c1, c2];
+    const lc1 = [c1,];
     return new Menu(la1, undefined)
 }
 

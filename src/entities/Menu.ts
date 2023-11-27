@@ -3,12 +3,12 @@ import { Student } from "./Student";
 import { Discipline } from "./Discipline";
 import { Course } from "./Course";
 import { FunctionalRequirements } from "../interfaces/FunctionalRequirements";
-import { findStudentByName, findStudentIndexByName, findDisciplineByName, findDisciplineIndexByName } from "./Utils";
+import { findStudentByName, findStudentIndexByName, findDisciplineByName, findDisciplineIndexByName, } from "./Utils";
 import { ViewMenus } from "./ViewMenus";
 
 export class Menu implements FunctionalRequirements {
     private students: Student[];
-    private disciplines: Discipline[] = [];
+    private listDisciplines: Discipline[] = [];
     private courses: Course[];
 
     constructor(students: Student[] = [], courses: Course[] = []) {
@@ -198,11 +198,11 @@ export class Menu implements FunctionalRequirements {
             grade = Number(readlineSync.question("Informe a nota para a disciplina: "));
         }
 
-        if (findDisciplineByName(this.disciplines, name)) {
+        if (findDisciplineByName(this.listDisciplines, name)) {
             console.error("\nErro: Disciplina já cadastrada.\n");
         } else {
             const newDiscipline = new Discipline(name, workload, grade);
-            this.disciplines.push(newDiscipline);
+            this.listDisciplines.push(newDiscipline);
             console.log("\nDisciplina cadastrada com sucesso.\n");
         }
         this.manageDisciplines()
@@ -210,7 +210,7 @@ export class Menu implements FunctionalRequirements {
 
     public conferDiscipline(): void {
         const name: string = readlineSync.question("Nome da disciplina: ");
-        const discipline = findDisciplineByName(this.disciplines, name);
+        const discipline = findDisciplineByName(this.listDisciplines, name);
         console.log(ViewMenus.disciplineInfo(discipline));
         this.manageDisciplines()
     }
@@ -218,9 +218,9 @@ export class Menu implements FunctionalRequirements {
     public deleteDiscipline(): void {
         console.log("\nREMOVER DISCIPLINA\n");
         const name: string = readlineSync.question("Nome da disciplina que será removida: ");
-        const disciplineIndex = findDisciplineIndexByName(this.disciplines, name);
+        const disciplineIndex = findDisciplineIndexByName(this.listDisciplines, name);
         if (disciplineIndex !== -1) {
-            const disciplinesRemoved = this.disciplines.splice(disciplineIndex, 1);
+            const disciplinesRemoved = this.listDisciplines.splice(disciplineIndex, 1);
             console.log("A seguinte disciplina foi removida com sucesso:");
             console.log(ViewMenus.disciplineInfo(disciplinesRemoved[0]));
         } else {
@@ -232,10 +232,10 @@ export class Menu implements FunctionalRequirements {
 
     public updateDiscipline(): void {
         const name: string = readlineSync.question("Nome da disciplina: ");
-        const disciplineIndex = findDisciplineIndexByName(this.disciplines, name);
+        const disciplineIndex = findDisciplineIndexByName(this.listDisciplines, name);
 
         if (disciplineIndex !== -1) {
-            const discipline = this.disciplines[disciplineIndex];
+            const discipline = this.listDisciplines[disciplineIndex];
             console.log(ViewMenus.disciplineUpdate());
             const option: string = readlineSync.question("\nEscolha uma opção: ");
 
@@ -295,13 +295,65 @@ export class Menu implements FunctionalRequirements {
         }
     }
 
-    registerCourse(): void {
-        console.log("\nIMPLEMENTAR CADASTRAR CURSO\n");
-        this.manageCourses()
-    }
 
-    conferCourse(): void {
-        console.log("\nIMPLEMENTAR CONSULTAR CURSO\n");
+    public registerCourse(): void {
+        if (this.listDisciplines.length === 0) {
+            console.log("\nVoçê não possue disciplina cadastrada\n");
+
+            this.manageCourses()
+        } else {
+            console.log("\nCADASTRAR CURSO\n");
+
+            const name: string = readlineSync.question("Nome do curso: ");
+            const listOfDicipline: Discipline[] = this.listDisciplines;
+            const turn: string = readlineSync.question("Qual turno ?");
+            const createdCourse: Course = new Course(name, listOfDicipline, turn);
+            this.addDiciplineInCouse(createdCourse);
+            const opt = readlineSync.question("Digite 1 caso já possuas uma nota para esse curso: ");
+            let courses: number = 0;
+            if (opt == "1") {
+                courses = Number(readlineSync.question("Informe a nota para o curso: "));
+            }
+            this.manageCourses()
+        }
+
+    }
+    public addDiciplineInCouse(createdCourse: Course): void {
+        ViewMenus.addDiciplineInCouseMenu();
+        const selectedOption = readlineSync.question("Selecione uma opção");
+        switch (selectedOption) {
+            case "1":
+                this.verifyDicipline(createdCourse);
+                console.log("Digite o nome da diciplina a ser adicionada");
+                break;
+            case "2":
+                console.log("Nenhum curso para atualizar.");
+                break;
+            case "3":
+                console.log("\nSaindo do sistema. Até mais!");
+                break;
+            default:
+                console.log("\nOpção inválida. Tente novamente.\n");
+                this.manageCourses()
+                break;
+        }
+    }
+    public verifyDicipline(createdCourse: Course): void {
+        const diciplineToAdd = readlineSync.question("Digite o nome da diciplina a ser adicionada:");
+        //chamar função de verificar diciplina
+        const index = findDisciplineIndexByName(this.listDisciplines, diciplineToAdd)
+        if (index !== -1) {
+            console.log("Diciplina não encontrada");
+            this.verifyDicipline(createdCourse);
+
+        } else {
+            createdCourse.getListOfDicipline().push(this.listDisciplines[index])
+        }
+    }
+    public conferCourse(): void {
+        const name: string = readlineSync.question("Nome do curso: ");
+        // const course = findCourseIndexByName(this.courses, name);
+        // console.log(ViewMenus.cousesInfo(course));
         this.manageCourses()
     }
 

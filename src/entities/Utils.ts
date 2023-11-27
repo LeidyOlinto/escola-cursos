@@ -1,3 +1,4 @@
+import { Course } from "./Course";
 import { Discipline } from "./Discipline";
 import { Student } from "./Student";
 
@@ -16,5 +17,9 @@ function findDisciplineByName(disciplines: Discipline[], name: string): Discipli
 function findDisciplineIndexByName(disciplines: Discipline[], name: string): number {
     return disciplines.findIndex(discipline => discipline.getName().toUpperCase() === name.toUpperCase());
 }
+function findCourseByName(courses: Course[], name:string){//  : Course | undefined 
+  return console.log("Implementar")
+}
 
-export { findStudentByName, findStudentIndexByName, findDisciplineByName , findDisciplineIndexByName}
+
+export { findStudentByName, findStudentIndexByName, findDisciplineByName , findDisciplineIndexByName,findCourseByName}
