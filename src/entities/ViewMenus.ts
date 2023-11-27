@@ -1,3 +1,4 @@
+import { Course } from "./Course";
 import { Discipline } from "./Discipline";
 import { Student } from "./Student";
 
@@ -88,6 +89,37 @@ export class ViewMenus {
     |  5 - Voltar ao menu principal    |
     | 6 - Sair                         |
     +==================================+
+    `;
+  }
+  static cousesInfo(courses: Course|undefined):string {
+    if (courses) {
+      return `
+      Nome: ${courses.getName()}
+      Lista de cursos: ${courses.getListOfDicipline()}
+      Turno: ${courses.getWorkload()}
+      `;
+    }
+    return `\nCurso não cadastrado.\n`
+  }
+  static cousesUpdate(): string{
+    return `
+
+    Opções de atualização para cursos:
+  +==============================================+  
+  |  1 - Visualizar lista de cursos              |
+  |  2 - Atualizar turno                         |
+  |  3 - Voltar                                  |
+  +==============================================+
+    `;
+  }
+  static addDiciplineInCouseMenu(): string{
+    return `
+
+    Opções de adição de diciplinas em um cursos:
+  +==============================================+  
+  |  1 - Adicionar diciplina                     |
+  |  2 - Voltar                                  |
+  +==============================================+
     `;
   }
 }

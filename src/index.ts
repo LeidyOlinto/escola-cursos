@@ -25,13 +25,13 @@ const baseMenu = (): Menu => {
 
     const ld1 = [d1, d2];
     const ld2 = [d3, d4];
-    const c1 = new Course("TI dados", ld1);
+    const c1 = new Course("TI dados", ld1, "Manhã");
     const c2 = new Course("Dados", [...ld2, ...ld1]);
 
     const lc1 = [c1, c2];
 
     return new Menu(la1, lc1);
-}
+}  
 
 const withBase = 0; // Mude para 1 e será carregado alguns dados iniciais para manipulação ou mude para 0 caso não queira dados pre-carregados
 
