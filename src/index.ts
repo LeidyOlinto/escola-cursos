@@ -23,18 +23,17 @@ const baseMenu = (): Menu => {
     const d3 = new Discipline("Banco de dados", 30, 80);
     const d4 = new Discipline("Padrões de Projeto", 20, 60);
 
-    const ld1 = [d1, d2]
-    const ld2 = [d3, d4]
+    const ld1 = [d1, d2];
+    const ld2 = [d3, d4];
     const c1 = new Course("TI dados", ld1, "Manhã");
-    // const c2 = new Course("Dados", [...ld2, ...ld1,]);
+    const c2 = new Course("Dados", [...ld2, ...ld1]);
 
-    const lc1 = [c1,];
-    return new Menu(la1, undefined)
-}
+    const lc1 = [c1, c2];
 
-const withBase = 1;
+    return new Menu(la1, lc1);
+}  
 
-if (withBase) {
-    main(baseMenu());
-} else
-    main(new Menu())
+const withBase = 0; // Mude para 1 e será carregado alguns dados iniciais para manipulação ou mude para 0 caso não queira dados pre-carregados
+
+if (withBase) main(baseMenu());
+else main(new Menu());
