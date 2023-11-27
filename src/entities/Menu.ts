@@ -6,7 +6,6 @@ import { FunctionalRequirements } from "../interfaces/FunctionalRequirements";
 import { findStudentByName, findStudentIndexByName, findDisciplineByName, findDisciplineIndexByName } from "./Utils";
 import { ViewMenus } from "./ViewMenus";
 
-
 export class Menu implements FunctionalRequirements {
     private students: Student[];
     private disciplines: Discipline[];
@@ -23,6 +22,7 @@ export class Menu implements FunctionalRequirements {
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processStartOption(option);
     }
+
     private processStartOption(option: string): void {
         switch (option) {
             case "1":
@@ -49,6 +49,7 @@ export class Menu implements FunctionalRequirements {
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processOptionStudents(option);
     }
+
     private processOptionStudents(option: string): void {
         switch (option) {
             case "1":
@@ -75,6 +76,7 @@ export class Menu implements FunctionalRequirements {
                 break;
         }
     }
+
     public registerStudent(): void {
         console.log("\nCADASTRAR ALUNO:");
         const name: string = readlineSync.question("Nome do aluno: ");
@@ -92,6 +94,7 @@ export class Menu implements FunctionalRequirements {
 
         this.manageStudents();
     }
+
     public conferStudent(): void {
         console.log("\nCONSULTAR ALUNO:");
         const name: string = readlineSync.question("Nome do aluno: ");
@@ -100,6 +103,7 @@ export class Menu implements FunctionalRequirements {
 
         this.manageStudents();
     }
+
     public deleteStudent(): void {
         console.log("\nREMOVER ALUNO:");
         const name: string = readlineSync.question("Nome do aluno: ");
@@ -114,6 +118,7 @@ export class Menu implements FunctionalRequirements {
 
         this.manageStudents();
     }
+
     public updateStudent(): void {
         console.log("\nATUALIZAR ALUNO:");
 
@@ -155,6 +160,7 @@ export class Menu implements FunctionalRequirements {
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processOptionDisciplines(option);
     }
+
     private processOptionDisciplines(option: string): void {
         switch (option) {
             case "1":
@@ -181,6 +187,7 @@ export class Menu implements FunctionalRequirements {
                 break;
         }
     }
+
     public registerDiscipline(): void {
         console.log("\nCADASTRAR DISCIPLINA\n");
         const name: string = readlineSync.question("Nome da disciplina: ");
@@ -195,18 +202,20 @@ export class Menu implements FunctionalRequirements {
         if (findDisciplineByName(this.disciplines, name)) {
             console.error("\nErro: Disciplina já cadastrada.\n");
         } else {
-            const newDiscipline = new Discipline(name, workload, grade );
+            const newDiscipline = new Discipline(name, workload, grade);
             this.disciplines.push(newDiscipline);
             console.log("\nDisciplina cadastrada com sucesso.\n");
         }
         this.manageDisciplines()
     }
+
     public conferDiscipline(): void {
         const name: string = readlineSync.question("Nome da disciplina: ");
         const discipline = findDisciplineByName(this.disciplines, name);
         console.log(ViewMenus.disciplineInfo(discipline));
         this.manageDisciplines()
     }
+
     public deleteDiscipline(): void {
         console.log("\nREMOVER DISCIPLINA\n");
         const name: string = readlineSync.question("Nome da disciplina que será removida: ");
@@ -221,6 +230,7 @@ export class Menu implements FunctionalRequirements {
 
         this.manageDisciplines()
     }
+
     public updateDiscipline(): void {
         const name: string = readlineSync.question("Nome da disciplina: ");
         const disciplineIndex = findDisciplineIndexByName(this.disciplines, name);
@@ -238,8 +248,8 @@ export class Menu implements FunctionalRequirements {
                     break;
                 case "2":
                     const newGrade: number = Number(readlineSync.question("Nova nota para disciplina: "));
-                     discipline.setGrade(newGrade);
-                     console.log("\nNota atualizada com sucesso.\n");
+                    discipline.setGrade(newGrade);
+                    console.log("\nNota atualizada com sucesso.\n");
                     break;
                 case "3": break;
                 default:
@@ -254,10 +264,11 @@ export class Menu implements FunctionalRequirements {
 
     public manageCourses(): void {
         console.log("\nGerenciando Cursos...\n");
-          console.log(ViewMenus.coursesMainMenu());
+        console.log(ViewMenus.coursesMainMenu());
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processOptionCourses(option);
     }
+
     processOptionCourses(option: string): void {
         switch (option) {
             case "1":
@@ -284,22 +295,24 @@ export class Menu implements FunctionalRequirements {
                 break;
         }
     }
+
     registerCourse(): void {
         console.log("\nIMPLEMENTAR CADASTRAR CURSO\n");
         this.manageCourses()
     }
+
     conferCourse(): void {
         console.log("\nIMPLEMENTAR CONSULTAR CURSO\n");
         this.manageCourses()
     }
+
     deleteCourse(): void {
         console.log("\nIMPLEMENTAR REMOVER CURSO\n");
         this.manageCourses()
     }
+
     updateCourse(): void {
         console.log("\nIMPLEMENTAR ATUALIZAR CURSO\n");
         this.manageCourses()
     }
-
 }
-
