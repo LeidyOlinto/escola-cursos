@@ -8,12 +8,11 @@ import { ViewMenus } from "./ViewMenus";
 
 export class Menu implements FunctionalRequirements {
     private students: Student[];
-    private disciplines: Discipline[];
+    private disciplines: Discipline[] = [];
     private courses: Course[];
 
-    constructor(students: Student[] = [], disciplines: Discipline[] = [], courses: Course[] = []) {
+    constructor(students: Student[] = [], courses: Course[] = []) {
         this.students = students
-        this.disciplines = disciplines
         this.courses = courses
     }
 
