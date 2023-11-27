@@ -29,7 +29,7 @@ const baseMenu = (): Menu => {
     const c2 = new Course("Dados", [...ld2, ...ld1]);
 
     const lc1 = [c1, c2];
-    return new Menu(la1, undefined, lc1)
+    return new Menu(la1, undefined)
 }
 
 const withBase = 1;

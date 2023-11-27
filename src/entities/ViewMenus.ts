@@ -9,19 +9,19 @@ export class ViewMenus {
    | 2 - Gerenciar DISCIPLINAS     |
    | 3 - Gerenciar CURSOS          |
    | 4 - SAIR                      |
-   |                               |
    +===============================+
     `;
   }
   static studentsMainMenu(): string {
     return `
-    MENU ALUNOS:
-    1 - Cadastrar ALUNO
-    2 - Consultar ALUNO
-    3 - Remover ALUNO
-    4 - Atualizar ALUNO
-    5 - Voltar ao menu principal
-    6 - Sair
+  +========== MENU ALUNOS: ===========+
+  |  1 - Cadastrar ALUNO              |
+  |  2 - Consultar ALUNO              |
+  |  3 - Remover ALUNO                |
+  |  4 - Atualizar ALUNO              |
+  |  5 - Voltar ao menu principal     |
+  |  6 - Sair                         |
+  +===================================+
     `;
   }
   static studentInfo(student: Student | undefined): string {
@@ -38,21 +38,25 @@ export class ViewMenus {
   }
   static studentUpdate(): string {
     return `
-    Opções de atualização:
-    1 - Atualizar telefone
-    2 - Atualizar email
-    3 - Voltar
+     Opções de atualização:
+   +==========================+  
+   | 1 - Atualizar telefone   |
+   | 2 - Atualizar email      |
+   | 3 - Voltar               |
+   +==========================+
     `;
   }
   static disciplinesMainMenu(): string {
     return `
-    "MENU DICIPLINAS:
-    "1- Cadastrar DISCIPLINA
-    "2- Consultar DISCIPLINA
-    "3- Remover DISCIPLINA
-    "4- Atualizar DISCIPLINA
-    "5 - Voltar ao menu principal
-    "6 - Sair
+
+    +====== MENU DICIPLINAS: =======+
+    | 1- Cadastrar DISCIPLINA       |
+    | 2- Consultar DISCIPLINA       |
+    | 3- Remover DISCIPLINA         |
+    | 4- Atualizar DISCIPLINA       |
+    | 5 - Voltar ao menu principal  |
+    | 6 - Sair                      |
+    +===============================+
     `;
   }
   static disciplineInfo(discipline: Discipline|undefined):string {
@@ -67,22 +71,25 @@ export class ViewMenus {
   }
   static disciplineUpdate(): string{
     return `
-    Opções de atualização para disciplina:
 
-    1 - Atualizar a carga-horária da disciplina
-    2 - Atualizar a nota da disciplina
-    3 - Voltar
+    Opções de atualização para disciplina:
+  +==============================================+  
+  |  1 - Atualizar a carga-horária da disciplina |
+  |  2 - Atualizar a nota da disciplina          |
+  |  3 - Voltar                                  |
+  +==============================================+
     `;
   }
   static coursesMainMenu(): string {
     return `
-    MENU CURSOS:
-    1 - Cadastrar CURSO
-    2 - Consultar CURSO
-    3 - Remover CURSO
-    4 - Atualizar CURSO
-    5 - Voltar ao menu principal
-    6 - Sair
+  +========= MENU CURSOS: ===========+
+  |  1 - Cadastrar CURSO             |
+  |  2 - Consultar CURSO             |
+  |  3 - Remover CURSO               |
+  |  4 - Atualizar CURSO             |   
+  |  5 - Voltar ao menu principal    |
+  | 6 - Sair                         |
+  +==================================+
     `;
   }
 }
