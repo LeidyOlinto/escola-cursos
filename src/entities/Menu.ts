@@ -154,7 +154,7 @@ export class Menu implements FunctionalRequirements {
 
 
     public manageDisciplines(): void {
-        console.log("\nGerenciando Disciplinas...\n");
+        console.log("\nGerenciando Disciplinas...");
         console.log(ViewMenus.disciplinesMainMenu());
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processOptionDisciplines(option);
@@ -188,7 +188,7 @@ export class Menu implements FunctionalRequirements {
     }
 
     public registerDiscipline(): void {
-        console.log("\nCADASTRAR DISCIPLINA\n");
+        console.log("\nCADASTRAR DISCIPLINA");
         const name: string = readlineSync.question("Nome da disciplina: ");
         const workload: number = parseInt(readlineSync.question("Número de horas da carga-horária: "));
 
@@ -216,7 +216,7 @@ export class Menu implements FunctionalRequirements {
     }
 
     public deleteDiscipline(): void {
-        console.log("\nREMOVER DISCIPLINA\n");
+        console.log("\nREMOVER DISCIPLINA");
         const name: string = readlineSync.question("Nome da disciplina que será removida: ");
         const disciplineIndex = findDisciplineIndexByName(this.listDisciplines, name);
         if (disciplineIndex !== -1) {
@@ -262,7 +262,7 @@ export class Menu implements FunctionalRequirements {
 
 
     public manageCourses(): void {
-        console.log("\nGerenciando Cursos...\n");
+        console.log("\nGerenciando Cursos...");
         console.log(ViewMenus.coursesMainMenu());
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processOptionCourses(option);
@@ -302,7 +302,7 @@ export class Menu implements FunctionalRequirements {
 
             this.manageCourses()
         } else {
-            console.log("\nCADASTRAR CURSO\n");
+            console.log("\nCADASTRAR CURSO");
 
             const name: string = readlineSync.question("Nome do curso: ");
             const listOfDicipline: Discipline[] = this.listDisciplines;
@@ -320,7 +320,7 @@ export class Menu implements FunctionalRequirements {
     }
     public addDiciplineInCouse(createdCourse: Course): void {
         ViewMenus.addDiciplineInCouseMenu();
-        const selectedOption = readlineSync.question("Selecione uma opção");
+        const selectedOption = readlineSync.question("Selecione uma opção: ");
         switch (selectedOption) {
             case "1":
                 this.verifyDicipline(createdCourse);
@@ -339,13 +339,12 @@ export class Menu implements FunctionalRequirements {
         }
     }
     public verifyDicipline(createdCourse: Course): void {
-        const diciplineToAdd = readlineSync.question("Digite o nome da diciplina a ser adicionada:");
+        const diciplineToAdd = readlineSync.question("Digite o nome da diciplina a ser adicionada: ");
         //chamar função de verificar diciplina
         const index = findDisciplineIndexByName(this.listDisciplines, diciplineToAdd)
         if (index !== -1) {
             console.log("Diciplina não encontrada");
             this.verifyDicipline(createdCourse);
-
         } else {
             createdCourse.getListOfDicipline().push(this.listDisciplines[index])
         }
