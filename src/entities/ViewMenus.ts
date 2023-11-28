@@ -81,14 +81,14 @@ export class ViewMenus {
   }
   static coursesMainMenu(): string {
     return `
-    +========= MENU CURSOS: ==========+
-    | 1 - Cadastrar CURSO             |
-    | 2 - Consultar CURSO             |
-    | 3 - Remover CURSO               |
-    | 4 - Atualizar CURSO             |
-    | 5 - Voltar ao menu principal    |
-    | 6 - Sair                        |
-    +=================================+
+    +========= MENU CURSOS: ===========+
+    |  1 - Cadastrar CURSO             |
+    |  2 - Consultar CURSO             |
+    |  3 - Remover CURSO               |
+    |  4 - Atualizar CURSO             |
+    |  5 - Voltar ao menu principal    |
+    |  6 - Sair                        |
+    +==================================+
     `;
   }
   static cousesInfo(courses: Course | undefined): string {
