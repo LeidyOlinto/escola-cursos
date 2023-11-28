@@ -18,7 +18,8 @@ function findDisciplineIndexByName(disciplines: Discipline[], name: string): num
     return disciplines.findIndex(discipline => discipline.getName().toUpperCase() === name.toUpperCase());
 }
 function findCourseByName(courses: Course[], name:string){//  : Course | undefined 
-  return console.log("Implementar")
+    return courses.findIndex(courses => courses.getName().toUpperCase() === name.toUpperCase());
+
 }
 
 

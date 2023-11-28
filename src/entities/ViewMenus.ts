@@ -87,7 +87,7 @@ export class ViewMenus {
     |  3 - Remover CURSO               |
     |  4 - Atualizar CURSO             |
     |  5 - Voltar ao menu principal    |
-    | 6 - Sair                         |
+    |  6 - Sair                        |
     +==================================+
     `;
   }

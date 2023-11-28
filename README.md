@@ -121,7 +121,7 @@ ___
   - [X] 3.4 - Atualizar DISCIPLINA
 
 - [ ] 04 - Crie um SUBMENU com as seguintes opções para a opção 3:
-  - [ ] 4.1 - Cadastrar CURSO
+  - [X] 4.1 - Cadastrar CURSO
   - [ ] 4.2 - Consultar CURSO
   - [ ] 4.3 - Remover CURSO
   - [ ] 4.4 - Atualizar CURSO
