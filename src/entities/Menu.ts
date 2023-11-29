@@ -96,7 +96,7 @@ export class Menu implements FunctionalRequirements {
 
     public conferStudent(): void {
         console.log("\nCONSULTAR ALUNO:");
-        const name: string = readlineSync.question("Nome do aluno: ");
+        const name: string = readlineSync.question("\nNome do aluno: ");
         const student = findStudentByName(this.students, name);
         console.log(ViewMenus.studentInfo(student));
 
@@ -105,7 +105,7 @@ export class Menu implements FunctionalRequirements {
 
     public deleteStudent(): void {
         console.log("\nREMOVER ALUNO:");
-        const name: string = readlineSync.question("Nome do aluno: ");
+        const name: string = readlineSync.question("\nNome do aluno: ");
         const studentIndex = findStudentIndexByName(this.students, name);
 
         if (studentIndex !== -1) {
@@ -121,7 +121,7 @@ export class Menu implements FunctionalRequirements {
     public updateStudent(): void {
         console.log("\nATUALIZAR ALUNO:");
 
-        const name: string = readlineSync.question("Nome do aluno: ");
+        const name: string = readlineSync.question("\nNome do aluno: ");
         const studentIndex = findStudentIndexByName(this.students, name);
 
         if (studentIndex !== -1) {
@@ -189,13 +189,13 @@ export class Menu implements FunctionalRequirements {
 
     public registerDiscipline(): void {
         console.log("\nCADASTRAR DISCIPLINA");
-        const name: string = readlineSync.question("Nome da disciplina: ");
+        const name: string = readlineSync.question("\nNome da disciplina: ");
         const workload: number = parseInt(readlineSync.question("Número de horas da carga-horária: "));
 
-        const opt = readlineSync.question("Digite 1 caso já possuas uma nota para essa disciplina: ");
+        const opt = readlineSync.question("\nDigite 1 caso já possuas uma nota para essa disciplina: ");
         let grade: number = 0;
         if (opt == "1") {
-            grade = Number(readlineSync.question("Informe a nota para a disciplina: "));
+            grade = Number(readlineSync.question("\nInforme a nota para a disciplina: "));
         }
 
         if (findDisciplineByName(this.listDisciplines, name)) {
@@ -209,7 +209,7 @@ export class Menu implements FunctionalRequirements {
     }
 
     public conferDiscipline(): void {
-        const name: string = readlineSync.question("Nome da disciplina: ");
+        const name: string = readlineSync.question("\nNome da disciplina: ");
         const discipline = findDisciplineByName(this.listDisciplines, name);
         console.log(ViewMenus.disciplineInfo(discipline));
         this.manageDisciplines()
@@ -217,11 +217,11 @@ export class Menu implements FunctionalRequirements {
 
     public deleteDiscipline(): void {
         console.log("\nREMOVER DISCIPLINA");
-        const name: string = readlineSync.question("Nome da disciplina que será removida: ");
+        const name: string = readlineSync.question("\nNome da disciplina que será removida: ");
         const disciplineIndex = findDisciplineIndexByName(this.listDisciplines, name);
         if (disciplineIndex !== -1) {
             const disciplinesRemoved = this.listDisciplines.splice(disciplineIndex, 1);
-            console.log("A seguinte disciplina foi removida com sucesso:");
+            console.log("\nA seguinte disciplina foi removida com sucesso:");
             console.log(ViewMenus.disciplineInfo(disciplinesRemoved[0]));
         } else {
             console.log("\nDisciplina não encontrada.\n");
@@ -379,12 +379,12 @@ export class Menu implements FunctionalRequirements {
     }
 
     deleteCourse(): void {
-        //console.log("\nIMPLEMENTAR REMOVER CURSO\n");
-        const name: string = readlineSync.question("Nome da curso que será removido: ");
+        console.log("\nREMOVER CURSO");
+        const name: string = readlineSync.question("\nNome da curso que será removido: ");
         const coursesIndex = findCourseByName(this.listCourses, name);
         if (coursesIndex !== -1) {
             const courseRemove = this.listCourses.splice(coursesIndex, 1);
-            console.log("A seguinte curso foi removido com sucesso:");
+            console.log("\nA seguinte curso foi removido com sucesso:");
             console.log(ViewMenus.cousesInfo(courseRemove[0]));
         
         } else {''
@@ -396,6 +396,7 @@ export class Menu implements FunctionalRequirements {
 
     updateCourse(): void {
         console.log("\nIMPLEMENTAR ATUALIZAR CURSO\n");
+
         this.manageCourses()
     }
 }

@@ -103,16 +103,16 @@ ___
 #### Os requisitos do projeto foram originalmente definidos como
 
 - [ ] 01 - Crie um sistema com um MENU com as seguintes opções:
-  - [ ] 1.1 - Gerenciar ALUNOS
+  - [x] 1.1 - Gerenciar ALUNOS
   - [X] 1.2 - Gerenciar DISCIPLINAS
   - [ ] 1.3 - Gerenciar CURSOS
   - [X] 1.4 - SAIR
 
-- [ ] 02 - Crie um SUBMENU com as seguintes opções para a opção 1:
-  - [ ] 2.1 - Cadastrar ALUNO
-  - [ ] 2.2 - Consultar ALUNO
-  - [ ] 2.3 - Remover ALUNO
-  - [ ] 2.4 - Atualizar ALUNO
+- [x] 02 - Crie um SUBMENU com as seguintes opções para a opção 1:
+  - [x] 2.1 - Cadastrar ALUNO
+  - [x] 2.2 - Consultar ALUNO
+  - [x] 2.3 - Remover ALUNO
+  - [x] 2.4 - Atualizar ALUNO
 
 - [X] 03 - Crie um SUBMENU com as seguintes opções para a opção 2:
   - [X] 3.1 - Cadastrar DISCIPLINA
@@ -123,10 +123,10 @@ ___
 - [ ] 04 - Crie um SUBMENU com as seguintes opções para a opção 3:
   - [X] 4.1 - Cadastrar CURSO
   - [X] 4.2 - Consultar CURSO
-  - [ ] 4.3 - Remover CURSO
+  - [x] 4.3 - Remover CURSO
   - [ ] 4.4 - Atualizar CURSO
 
-- [ ] 05 - Desenvolva cada uma das funcionalidades dos SUBMENUS.
+- [x] 05 - Desenvolva cada uma das funcionalidades dos SUBMENUS.
 
 - [X] 06 - Um ALUNO deve possuir um CURSO (e dados adicionais como nome, idade e etc.)
 
