@@ -298,7 +298,7 @@ export class Menu implements FunctionalRequirements {
 
     public registerCourse(): void {
         if (this.listDisciplines.length === 0) {
-            console.log("\nVoçê não possue disciplina cadastrada\n");
+            console.log("\nVocê não possui disciplina cadastrada\n");
             console.log("\nVolte ao MENU principal e cadastre uma diciplina\n");
 
             this.manageCourses()
@@ -346,7 +346,7 @@ export class Menu implements FunctionalRequirements {
                 this.listCourses.push(createdCourse);
                 return
             } else {
-                console.log('ocorreu um erro tente novamente')
+                console.log('Ocorreu um erro tente novamente')
                 this.manageCourses();
             }
 
@@ -354,7 +354,7 @@ export class Menu implements FunctionalRequirements {
     }
     public verifyListCourse(): void {
         if (this.listCourses.length === 0) {
-            console.log("\nVoçê não possue curso cadastrado\n");
+            console.log("\nVocê não possui curso cadastrado\n");
             console.log("\nVolte ao MENU principal e cadastre um curso\n");
             this.manageCourses()
         } else {
@@ -369,7 +369,7 @@ export class Menu implements FunctionalRequirements {
         const name: string = readlineSync.question("\nNome do curso: ");
         const courses = findCourseByName(this.listCourses, name);
         if (courses === -1) {
-            console.log("\ncurso nao encontrado")
+            console.log("\nCurso não encontrado.")
             this.manageCourses();
         } else {
             console.log(ViewMenus.cousesInfo(this.listCourses[courses]));
@@ -379,12 +379,11 @@ export class Menu implements FunctionalRequirements {
     }
 
     deleteCourse(): void {
-        //console.log("\nIMPLEMENTAR REMOVER CURSO\n");
         const name: string = readlineSync.question("Nome da curso que será removido: ");
         const coursesIndex = findCourseByName(this.listCourses, name);
         if (coursesIndex !== -1) {
             const courseRemove = this.listCourses.splice(coursesIndex, 1);
-            console.log("A seguinte curso foi removido com sucesso:");
+            console.log("O seguinte curso foi removido com sucesso:");
             console.log(ViewMenus.cousesInfo(courseRemove[0]));
 
         } else {
