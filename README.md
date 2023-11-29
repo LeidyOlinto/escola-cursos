@@ -122,15 +122,15 @@ ___
 
 - [ ] 04 - Crie um SUBMENU com as seguintes opções para a opção 3:
   - [X] 4.1 - Cadastrar CURSO
-  - [ ] 4.2 - Consultar CURSO
+  - [X] 4.2 - Consultar CURSO
   - [ ] 4.3 - Remover CURSO
   - [ ] 4.4 - Atualizar CURSO
 
 - [ ] 05 - Desenvolva cada uma das funcionalidades dos SUBMENUS.
 
-- [ ] 06 - Um ALUNO deve possuir um CURSO (e dados adicionais como nome, idade e etc.)
+- [X] 06 - Um ALUNO deve possuir um CURSO (e dados adicionais como nome, idade e etc.)
 
-- [ ] 07 - Um CURSO deve pussuir DISCIPLINAS (e dados como nome do curso, turno e etc.)
+- [X] 07 - Um CURSO deve pussuir DISCIPLINAS (e dados como nome do curso, turno e etc.)
 
 - [X] 08 - Uma DISCIPLINA deve possuir nome, carga horária, nota e etc.
 
