@@ -116,10 +116,10 @@ export class ViewMenus {
   static addDiciplineInCouseMenu(): string {
     return `
     Opções de adição de diciplinas em um cursos:
-  +=============================================+
-  | 1 - Adicionar diciplina                     |
-  | 2 - Voltar                                  |
-  +=============================================+
+  +================================================+
+  | 1 - Adicionar a diciplina que foi cadastrada:  |
+  | 2 - Voltar                                     |
+  +================================================+
   `;
   }
 }
