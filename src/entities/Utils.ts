@@ -17,22 +17,22 @@ function findDisciplineByName(disciplines: Discipline[], name: string): Discipli
 function findDisciplineIndexByName(disciplines: Discipline[], name: string): number {
     return disciplines.findIndex(discipline => discipline.getName().toUpperCase() === name.toUpperCase());
 }
-function findCourseByName(courses: Course[], name:string){//  : Course | undefined 
+function findCourseByName(courses: Course[], name: string) {//  : Course | undefined
     return courses.findIndex(courses => courses.getName().toUpperCase() === name.toUpperCase());
 
 }
 
-function returnNamesDiciplinesInCourse(diciplines: Discipline[]):string{
+function returnNamesDiciplinesInCourse(diciplines: Discipline[]): string {
     const nomesConcatenados = diciplines.reduce((acumulador, objeto, indice) => {
-     
+
         if (indice > 0) {
-          acumulador += ', ';
+            acumulador += ', ';
         }
         acumulador += objeto.getName();
-      
+
         return acumulador;
-      }, '');
-      return nomesConcatenados;
+    }, '');
+    return nomesConcatenados;
 }
 
-export { findStudentByName, findStudentIndexByName, findDisciplineByName , findDisciplineIndexByName,findCourseByName,returnNamesDiciplinesInCourse}
+export { findStudentByName, findStudentIndexByName, findDisciplineByName, findDisciplineIndexByName, findCourseByName, returnNamesDiciplinesInCourse }
