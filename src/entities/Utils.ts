@@ -24,18 +24,15 @@ function findCourseByName(courses: Course[], name:string){//  : Course | undefin
 
 function returnNamesDiciplinesInCourse(diciplines: Discipline[]):string{
     const nomesConcatenados = diciplines.reduce((acumulador, objeto, indice) => {
-        // Adiciona uma vírgula se não for o primeiro elemento
+     
         if (indice > 0) {
           acumulador += ', ';
         }
-      
-        // Concatena o nome atual
         acumulador += objeto.getName();
       
         return acumulador;
       }, '');
       return nomesConcatenados;
 }
-
 
 export { findStudentByName, findStudentIndexByName, findDisciplineByName , findDisciplineIndexByName,findCourseByName,returnNamesDiciplinesInCourse}

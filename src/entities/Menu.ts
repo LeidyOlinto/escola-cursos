@@ -366,10 +366,10 @@ export class Menu implements FunctionalRequirements {
     }
 
     public conferCourse(): void {
-        const name: string = readlineSync.question("Nome do curso: ");
+        const name: string = readlineSync.question("\nNome do curso: ");
         const courses = findCourseByName(this.listCourses, name);
         if(courses===-1){
-            console.log("curso nao encontrado")
+            console.log("\ncurso nao encontrado")
             this.manageCourses();
         }else{
             console.log(ViewMenus.cousesInfo(this.listCourses[courses]));
@@ -379,7 +379,18 @@ export class Menu implements FunctionalRequirements {
     }
 
     deleteCourse(): void {
-        console.log("\nIMPLEMENTAR REMOVER CURSO\n");
+        //console.log("\nIMPLEMENTAR REMOVER CURSO\n");
+        const name: string = readlineSync.question("Nome da curso que será removido: ");
+        const coursesIndex = findCourseByName(this.listCourses, name);
+        if (coursesIndex !== -1) {
+            const courseRemove = this.listCourses.splice(coursesIndex, 1);
+            console.log("A seguinte curso foi removido com sucesso:");
+            console.log(ViewMenus.cousesInfo(courseRemove[0]));
+        
+        } else {''
+            console.log("\nCurso não encontrada.\n");
+        }
+        
         this.manageCourses()
     }
 
