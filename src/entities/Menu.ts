@@ -336,7 +336,6 @@ export class Menu implements FunctionalRequirements {
         //chamar função de verificar diciplina
         const index = findDisciplineIndexByName(this.listDisciplines, diciplineToAdd)
         if (index === -1) {
-            console.log(index.toString());
             console.log("\nDiciplina não encontrada");
             this.verifyDicipline(createdCourse);
         } else {
@@ -395,6 +394,17 @@ export class Menu implements FunctionalRequirements {
 
     updateCourse(): void {
         console.log("\nIMPLEMENTAR ATUALIZAR CURSO\n");
+        if (this.listCourses.length == 0) {
+            console.log("Não há curso para ser atualizado.");
+        } else {
+            this.listAllCourses();
+            const name: string = readlineSync.question("Nome da curso que será removido: ");
+        }
         this.manageCourses()
+    }
+    listAllCourses(): void {
+        for (const course of this.listCourses) {
+            console.log(course);
+        }
     }
 }
