@@ -1,6 +1,8 @@
 import { Course } from "./Course";
 import { Discipline } from "./Discipline";
 import { Student } from "./Student";
+import {  returnNamesDiciplinesInCourse } from "./Utils";
+
 
 export class ViewMenus {
   static mainMenu(): string {
@@ -95,8 +97,8 @@ export class ViewMenus {
     if (courses) {
       return `
       Nome: ${courses.getName()}
-      Lista de cursos: ${courses.getListOfDicipline()}
-      Turno: ${courses.getWorkload()}
+      Lista de diciplinas:${ returnNamesDiciplinesInCourse(courses.listOfDiciplineCourse)}
+      Turno: ${courses.getTurn()}
       `;
     }
     return `\nCurso não cadastrado.\n`
