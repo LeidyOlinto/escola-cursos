@@ -326,11 +326,11 @@ export class Menu implements FunctionalRequirements {
         }
     }
     public verifyDicipline(createdCourse: Course): void {
-        const diciplineToAdd = readlineSync.question("\nDigite o nome da diciplina a ser adicionada: ");
+        const diciplineToAdd = readlineSync.question("\nDigite o nome da disciplina a ser adicionada: ");
         //chamar função de verificar diciplina
         const index = findDisciplineIndexByName(this.listDisciplines, diciplineToAdd)
         if (index === -1) {
-            console.log("\nDiciplina não encontrada");
+            console.log("\nDisciplina não encontrada");
             this.verifyDicipline(createdCourse);
         } else {
             const tamanhoAtualListaCursos = createdCourse.getListOfDiciplineCourse.length;
