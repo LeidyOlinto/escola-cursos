@@ -3,8 +3,9 @@ import { Student } from "./Student";
 import { Discipline } from "./Discipline";
 import { Course } from "./Course";
 import { FunctionalRequirements } from "../interfaces/FunctionalRequirements";
-import { findStudentByName, findStudentIndexByName, findDisciplineByName, findDisciplineIndexByName, findCourseByName, } from "./Utils";
+import { findStudentByName, findStudentIndexByName, findDisciplineByName, findDisciplineIndexByName, findCourseByName as findIndexCourseByName, } from "./Utils";
 import { ViewMenus } from "./ViewMenus";
+import { sys } from "typescript";
 
 export class Menu implements FunctionalRequirements {
     private students: Student[];
@@ -340,7 +341,7 @@ export class Menu implements FunctionalRequirements {
             this.verifyDicipline(createdCourse);
         } else {
             const tamanhoAtualListaCursos = createdCourse.getListOfDiciplineCourse.length;
-            createdCourse.listOfDiciplineCourse.push(this.listDisciplines[index]);
+            this.registerNewDisciplineOnList(createdCourse.getListOfDiciplineCourse(),this.listDisciplines[index]);
             if (tamanhoAtualListaCursos !== (createdCourse.getListOfDiciplineCourse.length + 1)) {
                 this.listCourses.push(createdCourse);
                 return
@@ -363,10 +364,9 @@ export class Menu implements FunctionalRequirements {
         }
 
     }
-
     public conferCourse(): void {
         const name: string = readlineSync.question("\nNome do curso: ");
-        const courses = findCourseByName(this.listCourses, name);
+        const courses = findIndexCourseByName(this.listCourses, name);
         if (courses === -1) {
             console.log("\nCurso não encontrado.")
             this.manageCourses();
@@ -376,10 +376,9 @@ export class Menu implements FunctionalRequirements {
         }
 
     }
-
     deleteCourse(): void {
         const name: string = readlineSync.question("Nome da curso que será removido: ");
-        const coursesIndex = findCourseByName(this.listCourses, name);
+        const coursesIndex = findIndexCourseByName(this.listCourses, name);
         if (coursesIndex !== -1) {
             const courseRemove = this.listCourses.splice(coursesIndex, 1);
             console.log("O seguinte curso foi removido com sucesso:");
@@ -391,20 +390,77 @@ export class Menu implements FunctionalRequirements {
 
         this.manageCourses()
     }
-
     updateCourse(): void {
-        console.log("\nIMPLEMENTAR ATUALIZAR CURSO\n");
         if (this.listCourses.length == 0) {
             console.log("Não há curso para ser atualizado.");
         } else {
             this.listAllCourses();
-            const name: string = readlineSync.question("Nome da curso que será removido: ");
+            const name: string = readlineSync.question("Nome da curso que será atualizado: ");
+            const courseIndexToUpdate = findIndexCourseByName(this.listCourses, name);
+            if (courseIndexToUpdate === -1) {
+                console.log(`Curso ${name} não encontrado.`);
+                this.manageCourses();
+            } else {
+                const course = this.listCourses[courseIndexToUpdate];
+                let opt: string = readlineSync.question("Informe o novo turno do curso ou\ndeixe em branco pra manter o existente: ").trim();
+                if (opt) course.setTurn(opt);
+                opt = readlineSync.question("Caso informado 1, será aberto o menu para manipular\nas disciplinas desse curso, senão as disciplinas não serão afetadas: ");
+                if (opt) {
+                    console.log(ViewMenus.manageDisciplinesFromCourse(course));
+                    const option: string = readlineSync.question("\nEscolha uma opção: ");
+                    this.processOptionManageDisciplinesFromCourse(course, option);
+                } else {
+                    this.manageCourses();
+                }
+            }
         }
-        this.manageCourses()
+
     }
+    processOptionManageDisciplinesFromCourse(course: Course, option: string) {
+        switch (option) {
+            case "1":
+                this.addDiciplineInCouse(course);
+                break;
+            case "2":
+                console.log("Implementar consultar disciplina do curso");
+                break;
+            case "3":
+                console.log("Implementar remover disciplina do curso");
+                break;
+            case "4":
+                console.log("Implementar Atualizar disciplina do curso");
+                break;
+            case "5":
+                console.log("Implementar listar disciplinas do curso");
+                break;
+            case "6":
+                console.log("implementar voltar ao menu principal");
+                break;
+            case "7":
+                console.log("Saindo do sistema!");
+                sys.exit();
+                break;
+            default:
+                console.error("Opção inválida.");
+                this.updateCourse();
+                break;
+        }
+    }
+
+    public registerNewDisciplineOnList(listOfDisciplines: Discipline[], sourceDiscipline: Discipline) {
+        const newDiscipline = new Discipline(sourceDiscipline.getName(), sourceDiscipline.getWokload(), 0);
+        listOfDisciplines.push(newDiscipline);
+    }
+
     listAllCourses(): void {
         for (const course of this.listCourses) {
             console.log(course);
+        }
+    }
+    public listDisciplinesFromCourse(course: Course): void {
+        let disciplines = course.getListOfDiciplineCourse();
+        for (const discipline of disciplines) {
+            console.log(discipline);
         }
     }
 }
