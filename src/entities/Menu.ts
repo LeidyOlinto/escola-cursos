@@ -193,16 +193,10 @@ export class Menu implements FunctionalRequirements {
         const name: string = readlineSync.question("Nome da disciplina: ");
         const workload: number = parseInt(readlineSync.question("Número de horas da carga-horária: "));
 
-        const opt = readlineSync.question("Digite 1 caso já possuas uma nota para essa disciplina: ");
-        let grade: number = 0;
-        if (opt == "1") {
-            grade = Number(readlineSync.question("Informe a nota para a disciplina: "));
-        }
-
         if (findDisciplineByName(this.listDisciplines, name)) {
             console.error("\nErro: Disciplina já cadastrada.\n");
         } else {
-            const newDiscipline = new Discipline(name, workload, grade);
+            const newDiscipline = new Discipline(name, workload, 0);
             this.listDisciplines.push(newDiscipline);
             console.log("\nDisciplina cadastrada com sucesso.\n");
         }
