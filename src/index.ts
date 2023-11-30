@@ -33,7 +33,7 @@ const baseMenu = (): Menu => {
     return new Menu(la1, lc1);
 }
 
-const withBase = 0; // Mude para 1 e será carregado alguns dados iniciais para manipulação ou mude para 0 caso não queira dados pre-carregados
+const withBase = 1; // Mude para 1 e será carregado alguns dados iniciais para manipulação ou mude para 0 caso não queira dados pre-carregados
 
 if (withBase) main(baseMenu());
 else main(new Menu());
