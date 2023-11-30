@@ -122,4 +122,18 @@ export class ViewMenus {
   +================================================+
   `;
   }
+  static manageDisciplinesFromCourse(course: Course): string {
+    return `
+    GERENCIAR DICIPLINAS DO CURSO DE ${course.getName().toUpperCase()}:
+    ,_______________________________,
+    | 1 - Cadastrar DISCIPLINA      |
+    | 2 - Consultar DISCIPLINA      |
+    | 3 - Remover DISCIPLINA        |
+    | 4 - Atualizar DISCIPLINA      |
+    | 5 - Listar DISCIPLINAS        |
+    | 6 - Voltar ao menu principal  |
+    | 7 - Sair                      |
+    +===============================+
+    `;
+  }
 }
