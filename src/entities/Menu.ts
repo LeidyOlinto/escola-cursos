@@ -21,7 +21,11 @@ export class Menu implements FunctionalRequirements {
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processStartOption(option);
     }
-
+    
+    /**
+     * Método para o menu principal
+     * @param option 
+     */
     private processStartOption(option: string): void {
         switch (option) {
             case "1":
@@ -48,7 +52,11 @@ export class Menu implements FunctionalRequirements {
         const option: string = readlineSync.question("\nEscolha uma opção: ");
         this.processOptionStudents(option);
     }
-
+    
+    /**
+     * Método para o menu de gerenciamento dos estudantes, que aparece após escolha do menu principal
+     * @param option 
+     */
     private processOptionStudents(option: string): void {
         switch (option) {
             case "1":
@@ -160,6 +168,10 @@ export class Menu implements FunctionalRequirements {
         this.processOptionDisciplines(option);
     }
 
+    /**
+     * Método para o menu de gerenciamento das disciplinas, que aparece após escolha do menu principal
+     * @param option 
+     */
     private processOptionDisciplines(option: string): void {
         switch (option) {
             case "1":
@@ -262,6 +274,10 @@ export class Menu implements FunctionalRequirements {
         this.processOptionCourses(option);
     }
 
+    /**
+     * Método para o menu de gerenciamento dos cursos, que aparece após escolha do menu principal
+     * @param option 
+     */
     processOptionCourses(option: string): void {
         switch (option) {
             case "1":
