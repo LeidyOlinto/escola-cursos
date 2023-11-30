@@ -342,11 +342,11 @@ export class Menu implements FunctionalRequirements {
         }
     }
     public verifyDicipline(createdCourse: Course): void {
-        const diciplineToAdd = readlineSync.question("\nDigite o nome da diciplina a ser adicionada: ");
+        const diciplineToAdd = readlineSync.question("\nDigite o nome da disciplina a ser adicionada: ");
         //chamar função de verificar diciplina
         const index = findDisciplineIndexByName(this.listDisciplines, diciplineToAdd)
         if (index === -1) {
-            console.log("\nDiciplina não encontrada");
+            console.log("\nDisciplina não encontrada");
             this.verifyDicipline(createdCourse);
         } else {
             const tamanhoAtualListaCursos = createdCourse.getListOfDiciplineCourse.length;
@@ -404,7 +404,7 @@ export class Menu implements FunctionalRequirements {
             console.log("Não há curso para ser atualizado.");
         } else {
             this.listAllCourses();
-            const name: string = readlineSync.question("Nome do curso que será atualizado: ");
+            const name: string = readlineSync.question("\nNome do curso que será atualizado: ");
             const courseIndexToUpdate = findIndexCourseByName(this.listCourses, name);
             if (courseIndexToUpdate === -1) {
                 console.log(`Curso ${name} não encontrado.`);
@@ -464,9 +464,16 @@ export class Menu implements FunctionalRequirements {
 
     listAllCourses(): void {
         for (const course of this.listCourses) {
-            console.log(course);
+            console.log(`\nNome do Curso: ${course.getName()}`);
+            console.log(`Carga Horária: ${course.getWorkload()}`);
+            console.log(`Turno: ${course.getTurn()}`);
+            console.log(`Disciplinas: `);
+            for (const discipline of course.getListOfDiciplineCourse()) {
+                console.log(`   ${discipline.getName()}`);
+            }
         }
     }
+
     public listDisciplinesFromCourse(course: Course): void {
         let disciplines = course.getListOfDiciplineCourse();
         for (const discipline of disciplines) {

@@ -1,4 +1,5 @@
 import { Discipline } from "./Discipline";
+
 export class Course {
     public name: string;
     private _workload: number;
