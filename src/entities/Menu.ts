@@ -453,7 +453,7 @@ export class Menu implements FunctionalRequirements {
             console.log(`Turno: ${course.getTurn()}`);
             console.log(`Disciplinas: `);
             for (const discipline of course.getListOfDiciplineCourse()) {
-                console.log(`   ${discipline.getName()}`);
+                console.log(`   - ${discipline.getName()}`);
             }
         }
     }
