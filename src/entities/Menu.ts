@@ -5,7 +5,6 @@ import { Course } from "./Course";
 import { FunctionalRequirements } from "../interfaces/FunctionalRequirements";
 import { findStudentByName, findStudentIndexByName, findDisciplineByName, findDisciplineIndexByName, findCourseByName as findIndexCourseByName, } from "./Utils";
 import { ViewMenus } from "./ViewMenus";
-import { sys } from "typescript";
 
 export class Menu implements FunctionalRequirements {
     private students: Student[];
@@ -193,16 +192,10 @@ export class Menu implements FunctionalRequirements {
         const name: string = readlineSync.question("Nome da disciplina: ");
         const workload: number = parseInt(readlineSync.question("Número de horas da carga-horária: "));
 
-        const opt = readlineSync.question("Digite 1 caso já possuas uma nota para essa disciplina: ");
-        let grade: number = 0;
-        if (opt == "1") {
-            grade = Number(readlineSync.question("Informe a nota para a disciplina: "));
-        }
-
         if (findDisciplineByName(this.listDisciplines, name)) {
             console.error("\nErro: Disciplina já cadastrada.\n");
         } else {
-            const newDiscipline = new Discipline(name, workload, grade);
+            const newDiscipline = new Discipline(name, workload, 0);
             this.listDisciplines.push(newDiscipline);
             console.log("\nDisciplina cadastrada com sucesso.\n");
         }
@@ -377,7 +370,7 @@ export class Menu implements FunctionalRequirements {
 
     }
     deleteCourse(): void {
-        const name: string = readlineSync.question("Nome da curso que será removido: ");
+        const name: string = readlineSync.question("Nome do curso que será removido: ");
         const coursesIndex = findIndexCourseByName(this.listCourses, name);
         if (coursesIndex !== -1) {
             const courseRemove = this.listCourses.splice(coursesIndex, 1);
@@ -395,7 +388,7 @@ export class Menu implements FunctionalRequirements {
             console.log("Não há curso para ser atualizado.");
         } else {
             this.listAllCourses();
-            const name: string = readlineSync.question("\nNome da curso que será atualizado: ");
+            const name: string = readlineSync.question("\nNome do curso que será atualizado: ");
             const courseIndexToUpdate = findIndexCourseByName(this.listCourses, name);
             if (courseIndexToUpdate === -1) {
                 console.log(`Curso ${name} não encontrado.`);
@@ -438,7 +431,6 @@ export class Menu implements FunctionalRequirements {
                 break;
             case "7":
                 console.log("Saindo do sistema!");
-                sys.exit();
                 break;
             default:
                 console.error("Opção inválida.");
@@ -451,6 +443,8 @@ export class Menu implements FunctionalRequirements {
         const newDiscipline = new Discipline(sourceDiscipline.getName(), sourceDiscipline.getWokload(), 0);
         listOfDisciplines.push(newDiscipline);
     }
+
+    public registerCourseToStudent(course: Course) { }
 
     listAllCourses(): void {
         for (const course of this.listCourses) {
