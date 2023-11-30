@@ -27,5 +27,5 @@ export class Course {
 
     setListOfDiciplineCourse(): void { this.listOfDiciplineCourse };
 
-    setTurn(): string { return this.turn }
+    setTurn(turn: string): string { return this.turn }
 }
