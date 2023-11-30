@@ -395,7 +395,7 @@ export class Menu implements FunctionalRequirements {
             console.log("Não há curso para ser atualizado.");
         } else {
             this.listAllCourses();
-            const name: string = readlineSync.question("Nome da curso que será atualizado: ");
+            const name: string = readlineSync.question("\nNome da curso que será atualizado: ");
             const courseIndexToUpdate = findIndexCourseByName(this.listCourses, name);
             if (courseIndexToUpdate === -1) {
                 console.log(`Curso ${name} não encontrado.`);
@@ -454,9 +454,16 @@ export class Menu implements FunctionalRequirements {
 
     listAllCourses(): void {
         for (const course of this.listCourses) {
-            console.log(course);
+            console.log(`\nNome do Curso: ${course.getName()}`);
+            console.log(`Carga Horária: ${course.getWorkload()}`);
+            console.log(`Turno: ${course.getTurn()}`);
+            console.log(`Disciplinas: `);
+            for (const discipline of course.getListOfDiciplineCourse()) {
+                console.log(`   ${discipline.getName()}`);
+            }
         }
     }
+
     public listDisciplinesFromCourse(course: Course): void {
         let disciplines = course.getListOfDiciplineCourse();
         for (const discipline of disciplines) {
