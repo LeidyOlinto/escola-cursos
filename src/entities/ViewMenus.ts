@@ -4,6 +4,9 @@ import { Student } from "./Student";
 import {  returnNamesDiciplinesInCourse } from "./Utils";
 
 
+/**
+ * Classe de View para todos os menus
+ */
 export class ViewMenus {
   static mainMenu(): string {
     return `
