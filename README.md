@@ -108,7 +108,7 @@ ___
   - [x] 1.3 - Gerenciar CURSOS
   - [X] 1.4 - SAIR
 
-- [ ] 02 - Crie um SUBMENU com as seguintes opções para a opção 1:
+- [x] 02 - Crie um SUBMENU com as seguintes opções para a opção 1:
   - [x] 2.1 - Cadastrar ALUNO
   - [x] 2.2 - Consultar ALUNO
   - [x] 2.3 - Remover ALUNO
@@ -120,13 +120,13 @@ ___
   - [X] 3.3 - Remover DISCIPLINA
   - [X] 3.4 - Atualizar DISCIPLINA
 
-- [ ] 04 - Crie um SUBMENU com as seguintes opções para a opção 3:
+- [x] 04 - Crie um SUBMENU com as seguintes opções para a opção 3:
   - [X] 4.1 - Cadastrar CURSO
   - [X] 4.2 - Consultar CURSO
-  - [ ] 4.3 - Remover CURSO
-  - [ ] 4.4 - Atualizar CURSO
+  - [x] 4.3 - Remover CURSO
+  - [x] 4.4 - Atualizar CURSO
 
-- [ ] 05 - Desenvolva cada uma das funcionalidades dos SUBMENUS.
+- [x] 05 - Desenvolva cada uma das funcionalidades dos SUBMENUS.
 
 - [X] 06 - Um ALUNO deve possuir um CURSO (e dados adicionais como nome, idade e etc.)
 
