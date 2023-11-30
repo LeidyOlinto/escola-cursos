@@ -17,9 +17,9 @@ function findDisciplineByName(disciplines: Discipline[], name: string): Discipli
 function findDisciplineIndexByName(disciplines: Discipline[], name: string): number {
     return disciplines.findIndex(discipline => discipline.getName().toUpperCase() === name.toUpperCase());
 }
+
 function findCourseByName(courses: Course[], name: string) {//  : Course | undefined
     return courses.findIndex(courses => courses.getName().toUpperCase() === name.toUpperCase());
-
 }
 
 function returnNamesDiciplinesInCourse(diciplines: Discipline[]): string {
